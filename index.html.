@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Swim Instruction Services</title>
+  <style>
+    /* Add your CSS styles here */
+    /* For simplicity, you can also use an external CSS file */
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Swim Instruction Services</h1>
+  </header>
+
+  <main>
+    <h2>Available Time Slots</h2>
+    <p>Select a time slot for your swim instruction:</p>
+
+    <div id="timeSlots">
+      <!-- Time slots will be dynamically generated here -->
+    </div>
+
+    <button id="bookButton">Book Now</button>
+  </main>
+
+  <footer>
+    <p>Contact us at example@example.com for any inquiries.</p>
+  </footer>
+
+  <script>
+    // JavaScript code for generating time slots and handling booking
+
+    // Available time slots (example data)
+    const availableTimeSlots = [
+      { time: '09:00 AM', booked: false },
+      { time: '10:00 AM', booked: false },
+      { time: '11:00 AM', booked: true },
+      // Add more time slots as needed
+    ];
+
+    // Function to generate time slots dynamically
+    function generateTimeSlots() {
+      const timeSlotsContainer = document.getElementById('timeSlots');
+
+      availableTimeSlots.forEach(slot => {
+        const slotElement = document.createElement('div');
+        slotElement.innerText = slot.time;
+        slotElement.classList.add('timeSlot');
+        if (slot.booked) {
+          slotElement.classList.add('booked');
+          slotElement.setAttribute('disabled', 'disabled');
+        } else {
+          slotElement.addEventListener('click', () => bookTimeSlot(slot));
+        }
+        timeSlotsContainer.appendChild(slotElement);
+      });
+    }
+
+    // Function to handle booking a time slot
+    function bookTimeSlot(slot) {
+      // Here you can add logic to handle the booking process,
+      // such as updating the database or showing a confirmation message.
+      console.log('Booked time slot:', slot.time);
+      alert('Time slot booked successfully!');
+    }
+
+    // Generate time slots when the page loads
+    generateTimeSlots();
+  </script>
+</body>
+</html>
